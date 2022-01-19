@@ -91,5 +91,8 @@ from cnn import Test
 model = Test(model_type).model
 score = test_multi(model_type, model)
 params= np.sum([K.count_params(w) for w in model.trainable_weights])
-masterCategory_accuracy = score[4]
-subCategory_accuracy = score[5]
+masterCategory_accuracy = score[3]
+subCategory_accuracy = score[4]
+
+df.loc[df.index.max()+1] = [model_type, weights_path, masterCategory_accuracy, subCategory_accuracy, params,np.datetime64('now')]
+df.to_csv("../testing/test_results.csv", index=False)
