@@ -95,4 +95,4 @@ masterCategory_accuracy = score[3]
 subCategory_accuracy = score[4]
 
 df.loc[df.index.max()+1] = [model_type, weights_path, masterCategory_accuracy, subCategory_accuracy, params,np.datetime64('now')]
-df.to_csv("../testing/test_results.csv", index=False)
+df.to_csv("./testing/test_results.csv", index=False)
