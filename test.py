@@ -13,7 +13,7 @@ import tensorflow.keras.backend as K
 #positional arguments required for test
 model_type = 'Condition'
 batch = 128
-weights_path = './weights/'
+weights_path = './weights/Condition_best_weights.h5'
 
 test_df = pd.read_csv("test.csv")
 
