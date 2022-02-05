@@ -1,4 +1,4 @@
-,id,category,subcategory,image
+,id,category,subcat,image
 0,V0432,Sandalia,Anabela,00004-v0430-v0432.jpg
 1,L6625,Sandalia,Anabela,00006-l6620-l6625.jpg
 2,Z5215,Sandalia,Anabela,00001-z5210-z5215.jpg
@@ -90,7 +90,6 @@
 88,G0073,Bota,Cano Curto,00001-g0070-g0073.jpg
 89,X9172,Bota,Cano Curto,00011-x9170-x9172.jpg
 90,W9611,Bota,Cano Curto,00004-w9610-w9611.jpg
-91,B9924,Sapato,Cano Curto,00001-b9920-b9924.jpg
 92,B9874,Bota,Cano Curto,00001-b9870-b9874.jpg
 93,G0271,Bota,Cano Curto,00001-g0270-g0271.jpg
 94,X7684T,Bota,Cano Curto,00011-x7680-x7684t.jpg
@@ -220,10 +219,8 @@
 218,C0117A,Tenis,Casual,00002-c0100-c0117a.jpg
 219,C2641,Tenis,Casual,00002-c2640-c2641.jpg
 220,C1267,Tenis,Casual,00002-c1260-c1267.jpg
-221,L7993,Bota,Casual,00006-l7990-l7993.jpg
 222,V1803,Tenis,Casual,00004-v1800-v1803.jpg
 223,L8003,Tenis,Casual,00006-l8000-l8003.jpg
-224,L8061,Bota,Casual,00006-l8060-l8061.jpg
 225,G3841,Tenis,Casual,00001-g3840-g3841.jpg
 226,Q4101,Tenis,Casual,00011-q4100-q4101.jpg
 227,C1296T,Tenis,Casual,00002-c1280-c1296t.jpg
@@ -250,10 +247,8 @@
 248,L8351,Tenis,Casual,00006-l8350-l8351.jpg
 249,Q6303,Tenis,Casual,00011-q6300-q6303.jpg
 250,C2981,Tenis,Casual,00002-c2980-c2981.jpg
-251,L8463,Bota,Casual,00006-l8460-l8463.jpg
 252,Q6362,Tenis,Casual,00011-q6360-q6362.jpg
 253,G4812,Tenis,Casual,00001-g4810-g4812.jpg
-254,L8521,Bota,Casual,00006-l8520-l8521.jpg
 255,L8354,Tenis,Casual,00006-l8350-l8354.jpg
 256,V0251,Tenis,Chunky,00004-v0250-v0251.jpg
 257,T3081A,Tenis,Chunky,00007-t3080-t3081a.jpg
@@ -759,7 +754,6 @@
 757,L6564,Tenis,Slip On,00006-l6560-l6564.jpg
 758,C0528,Tenis,Slip On,00002-c0520-c0528.jpg
 759,V0425,Tenis,Slip On,00004-v0420-v0425.jpg
-760,C0387,Sapato,Slip On,00002-c0380-c0387.jpg
 761,C1850,Tenis,Slip On,00002-c1840-c1850.jpg
 762,Q1781,Tenis,Slip On,00011-q1780-q1781.jpg
 763,C0906A,Tenis,Slip On,00002-c0900-c0906a.jpg
