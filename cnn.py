@@ -17,6 +17,10 @@ import sys
 
 print(tf.__version__ )
 
+def saveParameters(content):
+    file = open("parameters.json", "w")
+    file.write(content + "\r\n")
+    file.close()
 
 class NonNegUnitNorm(Constraint):
     '''Enforces all weight elements to be non-0 and each column/row to be unit norm'''
@@ -146,7 +150,7 @@ class Train:
         }
         model.compile(optimizer=SGD(lr=0.001, momentum=0.9), loss=losses, metrics=['categorical_accuracy'])
 
-        print("Config: ", model.get_config())
+        saveParameters(model.get_config())
 
         checkpoint = ModelCheckpoint("./weights/"+label+"_best_weights.h5", monitor='val_loss', verbose=1,
             save_best_only=True, save_weights_only=True,mode='auto')
