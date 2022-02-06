@@ -14,6 +14,7 @@ from tensorflow.keras.callbacks import Callback, ModelCheckpoint
 from tensorflow.keras.initializers import Zeros
 from tensorflow.keras.layers import Lambda
 import sys
+import json 
 
 print(tf.__version__ )
 
@@ -150,7 +151,7 @@ class Train:
         }
         model.compile(optimizer=SGD(lr=0.001, momentum=0.9), loss=losses, metrics=['categorical_accuracy'])
 
-        saveParameters(model.get_config())
+        saveParameters(json.dumps(model.get_config(), indent = 4))
 
         checkpoint = ModelCheckpoint("./weights/"+label+"_best_weights.h5", monitor='val_loss', verbose=1,
             save_best_only=True, save_weights_only=True,mode='auto')
