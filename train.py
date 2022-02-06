@@ -64,6 +64,7 @@ TODAY = str(datetime.date(datetime.now()))
 
 train_datagen = ImageDataGenerator(rescale=1. / 255,
                                    shear_range=0.1,
+                                   rotation_range=7,
                                    zoom_range=0.1,
                                    horizontal_flip=True,
                                    samplewise_center=True,

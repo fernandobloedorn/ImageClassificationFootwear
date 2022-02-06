@@ -146,6 +146,8 @@ class Train:
         }
         model.compile(optimizer=SGD(lr=0.001, momentum=0.9), loss=losses, metrics=['categorical_accuracy'])
 
+        print("Config: ", model.get_config())
+
         checkpoint = ModelCheckpoint("./weights/"+label+"_best_weights.h5", monitor='val_loss', verbose=1,
             save_best_only=True, save_weights_only=True,mode='auto')
         self.cbks = [checkpoint]
