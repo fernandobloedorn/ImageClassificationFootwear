@@ -144,7 +144,7 @@ def train_recurrent(label, model,cbks):
     # Saving the weights in the current directory
     model.save_weights("./weights/"+label+"_"+str(epochs)+"_epochs_"+TODAY+"_crossvalidation.h5")                                        
 
-from cnn-crossvalidation import Train
+from cnncrossvalidation import Train
 train = Train(model_type)
 model = train.model
 cbks = train.cbks
