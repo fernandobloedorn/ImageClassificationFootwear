@@ -74,6 +74,7 @@ def test_multi(label, model):
         batch_size=batch,
         class_mode='multi_output')
 
+    print("Running predict...")
     predictions = model.predict(test_generator)
     print(predictions)
 
