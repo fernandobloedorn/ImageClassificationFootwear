@@ -116,7 +116,11 @@ def train_recurrent(label, model,cbks):
         pd.DataFrame.from_dict(history.history).to_csv("./history/"+label+"_"+str(epochs)+"_epochs_"+TODAY+'_crossvalidation.csv',index=False)
 
 
+        # https://gist.github.com/RyanAkilos/3808c17f79e77c4117de35aa68447045
+        # https://www.analyticsvidhya.com/blog/2021/06/confusion-matrix-for-multi-class-classification/#:~:text=Confusion%20Matrix%20is%20used%20to,number%20of%20classes%20or%20outputs.
+
         print("========= Confusion matriz ====================")
+        print('Predizendo...')
         Y_pred = model.predict(val_generator, STEP_SIZE_VALID)
         # y_pred = np.argmax(Y_pred, axis=1)
         print('Confusion Matrix')
@@ -124,7 +128,8 @@ def train_recurrent(label, model,cbks):
         print(confusion_matrix(val_generator, Y_pred))
         print('Classification Report')
         target_names = ['Bota', 'Sandalia', 'Sapato', 'Tenis']
-        print(classification_report(val_generator.classes, y_pred, target_names=target_names))
+        # print(classification_report(val_generator.classes, y_pred, target_names=target_names))
+        print(classification_report(val_generator, Y_pred, target_names=target_names))
         print("========= End confusion matriz ====================")
 
 
