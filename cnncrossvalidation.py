@@ -259,6 +259,16 @@ class Test:
 
         model.compile(optimizer=SGD(lr=0.001, momentum=0.9), loss=losses,
                       metrics=['categorical_accuracy'])
+
+
+        Y_pred = model.predict_generator(validation_generator, num_of_test_samples // batch_size+1)
+        y_pred = np.argmax(Y_pred, axis=1)
+        print('Confusion Matrix')
+        print(confusion_matrix(validation_generator.classes, y_pred))
+        print('Classification Report')
+        target_names = ['Cats', 'Dogs', 'Horse']
+        print(classification_report(validation_generator.classes, y_pred, target_names=target_names))
+        
                       
         checkpoint = ModelCheckpoint("./weights/"+label+"_best_weights_crossvalidation.h5", monitor='val_loss', verbose=1,
             save_best_only=True, save_weights_only=True,mode='auto')
