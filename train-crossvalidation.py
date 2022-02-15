@@ -122,14 +122,14 @@ def train_recurrent(label, model,cbks):
         print("========= Confusion matriz ====================")
         print('Predizendo...')
         Y_pred = model.predict(val_generator, STEP_SIZE_VALID)
-        # y_pred = np.argmax(Y_pred, axis=1)
+        y_pred = np.argmax(Y_pred, axis=1)
         print('Confusion Matrix')
         # print(confusion_matrix(val_generator.classes, y_pred))
-        print(confusion_matrix(val_generator, Y_pred))
+        print(confusion_matrix(val_generator, y_pred))
         print('Classification Report')
         target_names = ['Bota', 'Sandalia', 'Sapato', 'Tenis']
         # print(classification_report(val_generator.classes, y_pred, target_names=target_names))
-        print(classification_report(val_generator, Y_pred, target_names=target_names))
+        print(classification_report(val_generator, y_pred, target_names=target_names))
         print("========= End confusion matriz ====================")
 
 
