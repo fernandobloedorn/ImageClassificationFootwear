@@ -124,7 +124,7 @@ def train_recurrent(label, model,cbks):
         plt.xlabel('epoch')
         plt.legend(['train master', 'val master', 'train sub', 'val sub'], loc='upper left')
         plt.show()
-        plt.savefig("./plots/"+label+"_"+str(epochs)+"_epochs_"+TODAY+"_loss.png", bbox_inches='tight')
+        plt.savefig("./plots/"+label+"_"+str(epochs)+"_epochs_"+TODAY+"_loss_normal.png", bbox_inches='tight')
     except ValueError as v:
         print(v)
 

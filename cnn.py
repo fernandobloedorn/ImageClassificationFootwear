@@ -153,7 +153,7 @@ class Train:
 
         saveParameters(json.dumps(model.get_config(), indent = 4))
 
-        checkpoint = ModelCheckpoint("./weights/"+label+"_best_weights.h5", monitor='val_loss', verbose=1,
+        checkpoint = ModelCheckpoint("./weights/"+label+"_best_weights_normal.h5", monitor='val_loss', verbose=1,
             save_best_only=True, save_weights_only=True,mode='auto')
         self.cbks = [checkpoint]
         self.model = model
