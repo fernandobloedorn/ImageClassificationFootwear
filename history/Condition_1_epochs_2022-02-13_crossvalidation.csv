@@ -1,0 +1,2 @@
+loss,master_output_loss,sub_output_loss,master_output_categorical_accuracy,sub_output_categorical_accuracy,val_loss,val_master_output_loss,val_sub_output_loss,val_master_output_categorical_accuracy,val_sub_output_categorical_accuracy
+4.18993616104126,1.2921913862228394,2.89774489402771,0.5628255009651184,0.2001953125,3.751300096511841,1.2984198331832886,2.4528801441192627,0.3151041567325592,0.3359375
