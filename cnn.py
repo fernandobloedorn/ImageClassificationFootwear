@@ -143,7 +143,7 @@ class Train:
 
         trainable_params= np.sum([K.count_params(w) for w in model.trainable_weights])
         #trainable_params = tf.keras.backend.count_params(model.trainable_weights)
-        print("Trainable paramaters: "+str(trainable_params))
+        print("===== Trainable paramaters: "+str(trainable_params))
 
         losses = {
             "master_output": "categorical_crossentropy",
@@ -153,7 +153,7 @@ class Train:
 
         saveParameters(json.dumps(model.get_config(), indent = 4))
 
-        checkpoint = ModelCheckpoint("./weights/"+label+"_best_weights_normal.h5", monitor='val_loss', verbose=1,
+        checkpoint = ModelCheckpoint("./weights/"+label+"_best_weights_com_tf.h5", monitor='val_loss', verbose=1,
             save_best_only=True, save_weights_only=True,mode='auto')
         self.cbks = [checkpoint]
         self.model = model
