@@ -23,6 +23,24 @@ def saveParameters(content):
     file.write(content + "\r\n")
     file.close()
 
+# https://datascience.stackexchange.com/questions/45165/how-to-get-accuracy-f1-precision-and-recall-for-a-keras-model
+def recall_m(y_true, y_pred):
+    true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
+    possible_positives = K.sum(K.round(K.clip(y_true, 0, 1)))
+    recall = true_positives / (possible_positives + K.epsilon())
+    return recall
+
+def precision_m(y_true, y_pred):
+    true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
+    predicted_positives = K.sum(K.round(K.clip(y_pred, 0, 1)))
+    precision = true_positives / (predicted_positives + K.epsilon())
+    return precision
+
+def f1_m(y_true, y_pred):
+    precision = precision_m(y_true, y_pred)
+    recall = recall_m(y_true, y_pred)
+    return 2*((precision*recall)/(precision+recall+K.epsilon()))
+
 class NonNegUnitNorm(Constraint):
     '''Enforces all weight elements to be non-0 and each column/row to be unit norm'''
     def __init__(self, axis=1):
@@ -149,11 +167,11 @@ class Train:
             "master_output": "categorical_crossentropy",
             "sub_output": "categorical_crossentropy",
         }
-        model.compile(optimizer=SGD(lr=0.001, momentum=0.9), loss=losses, metrics=['categorical_accuracy'])
+        model.compile(optimizer=SGD(lr=0.001, momentum=0.9), loss=losses, metrics=['categorical_accuracy', f1_m, precision_m, recall_m])
 
         saveParameters(json.dumps(model.get_config(), indent = 4))
 
-        checkpoint = ModelCheckpoint("./weights/"+label+"_best_weights_com_tf.h5", monitor='val_loss', verbose=1,
+        checkpoint = ModelCheckpoint("./weights/"+label+"_best_weights_normal.h5", monitor='val_loss', verbose=1,
             save_best_only=True, save_weights_only=True,mode='auto')
         self.cbks = [checkpoint]
         self.model = model
@@ -260,7 +278,7 @@ class Test:
         model.compile(optimizer=SGD(lr=0.001, momentum=0.9), loss=losses,
                       metrics=['categorical_accuracy'])
                       
-        checkpoint = ModelCheckpoint("./weights/"+label+"_best_weights.h5", monitor='val_loss', verbose=1,
+        checkpoint = ModelCheckpoint("./weights/"+label+"_best_weights_normal.h5", monitor='val_loss', verbose=1,
             save_best_only=True, save_weights_only=True,mode='auto')
         self.cbks = [checkpoint]
         self.model = model

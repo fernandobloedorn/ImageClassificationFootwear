@@ -112,24 +112,38 @@ def train_recurrent(label, model,cbks):
                             callbacks=cbks)
         print("Finished training")
         #Save training as csv
-        pd.DataFrame.from_dict(history.history).to_csv("./history/"+label+"_"+str(epochs)+"_epochs_"+TODAY+'.csv',index=False)
+        pd.DataFrame.from_dict(history.history).to_csv("./history/"+label+"_"+str(epochs)+"_epochs_"+TODAY+'_normal.csv',index=False)
+
+        # summarize history for Accuracy
+        plt.plot(history.history['master_output_categorical_accuracy'])
+        plt.plot(history.history['val_master_output_categorical_accuracy'])
+        plt.plot(history.history['sub_output_categorical_accuracy'])
+        plt.plot(history.history['val_sub_output_categorical_accuracy'])
+        plt.title('Accuracy')
+        plt.ylabel('Accuracy')
+        plt.xlabel('Epoch')
+        plt.legend(['Train master', 'Val master', 'Train sub', 'Val sub'], loc='upper left')
+        plt.show()
+        plt.savefig("./plots/"+label+"_"+str(epochs)+"_epochs_"+TODAY+"_accuracy_normal.png", bbox_inches='tight')
 
         # summarize history for loss
         plt.plot(history.history['master_output_loss'])
         plt.plot(history.history['val_master_output_loss'])
         plt.plot(history.history['sub_output_loss'])
         plt.plot(history.history['val_sub_output_loss'])
-        plt.title('model loss')
-        plt.ylabel('loss')
-        plt.xlabel('epoch')
-        plt.legend(['train master', 'val master', 'train sub', 'val sub'], loc='upper left')
+        plt.title('Model loss')
+        plt.ylabel('Loss')
+        plt.xlabel('Tpoch')
+        plt.legend(['Train master', 'Val master', 'Train sub', 'Val sub'], loc='upper left')
         plt.show()
         plt.savefig("./plots/"+label+"_"+str(epochs)+"_epochs_"+TODAY+"_loss_normal.png", bbox_inches='tight')
+
+
     except ValueError as v:
         print(v)
 
     # Saving the weights in the current directory
-    model.save_weights("./weights/"+label+"_"+str(epochs)+"_epochs_"+TODAY+".h5")                                        
+    model.save_weights("./weights/"+label+"_"+str(epochs)+"_epochs_"+TODAY+"_normal.h5")                                        
 
 from cnn import Train
 train = Train(model_type)

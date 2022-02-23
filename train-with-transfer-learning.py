@@ -118,15 +118,28 @@ def train_recurrent(label, model,cbks):
         #Save training as csv
         pd.DataFrame.from_dict(history.history).to_csv("./history/"+label+"_"+str(epochs)+"_epochs_"+TODAY+'_com_tf.csv',index=False)
 
+
+        # summarize history for Accuracy
+        plt.plot(history.history['master_output_categorical_accuracy'])
+        plt.plot(history.history['val_master_output_categorical_accuracy'])
+        plt.plot(history.history['sub_output_categorical_accuracy'])
+        plt.plot(history.history['val_sub_output_categorical_accuracy'])
+        plt.title('Model accuracy')
+        plt.ylabel('Accuracy')
+        plt.xlabel('Epoch')
+        plt.legend(['Train master', 'Val master', 'Train sub', 'Val sub'], loc='upper left')
+        plt.show()
+        plt.savefig("./plots/"+label+"_"+str(epochs)+"_epochs_"+TODAY+"_accuracy_com_tf.png", bbox_inches='tight')
+
         # summarize history for loss
         plt.plot(history.history['master_output_loss'])
         plt.plot(history.history['val_master_output_loss'])
         plt.plot(history.history['sub_output_loss'])
         plt.plot(history.history['val_sub_output_loss'])
-        plt.title('model loss')
-        plt.ylabel('loss')
-        plt.xlabel('epoch')
-        plt.legend(['train master', 'val master', 'train sub', 'val sub'], loc='upper left')
+        plt.title('Model loss')
+        plt.ylabel('Loss')
+        plt.xlabel('Epoch')
+        plt.legend(['Train master', 'Val master', 'Train sub', 'Val sub'], loc='upper left')
         plt.show()
         plt.savefig("./plots/"+label+"_"+str(epochs)+"_epochs_"+TODAY+"_loss_com_tf.png", bbox_inches='tight')
     except ValueError as v:
