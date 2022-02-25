@@ -13,14 +13,16 @@ import tensorflow.keras.backend as K
 #positional arguments required for test
 model_type = 'Condition'
 batch = 128
-weights_path = './weights/Condition_best_weights_com_tf.h5'
+weights_path = './weights/Condition_best_weights_tf_25.h5'
 
 test_df = pd.read_csv("test.csv")
+
+TODAY = datetime.now().strftime("%Y-%m-%d-%H%M%S")
 
 #check if results csv exists. if it does not then create it. append each result test run as a new label 
 #row contains the label (BCNN, Recurrent etc), the weights path, the three test accuracies (or 1 if it is a baseline cnn model)
 # and the timestamp when it was tested
-exists = path.exists("./testing/test_results_com_tf.csv")
+exists = path.exists("./testing/test_results_tf_25_" + TODAY + ".csv")
 if(not exists):
     dtypes = np.dtype([
           ('Model', str),
@@ -35,7 +37,7 @@ if(not exists):
     df = pd.DataFrame(data)
 else:
     types = {'Model':str,'Weights Path': str, 'Category Accuracy %': np.float64, 'SubCategory Accuracy %': np.float64, 'Trainable params': np.float64}
-    df = pd.read_csv("./testing/test_results_com_tf.csv",dtype=types, parse_dates=['Timestamp'])
+    df = pd.read_csv("./testing/test_results_tf_25_" + TODAY + ".csv",dtype=types, parse_dates=['Timestamp'])
 
 lblmapsub = {'Cano Curto': 0, 'Cano Medio': 1, 'Cano Longo': 2, 'Slip On': 3, 'De Dedo': 4, 'Sapatilha': 5,
              'Mule': 6, 'Rasteira': 7, 'Scarpin': 8, 'Esportivo': 9, 'Casual': 10, 'Cano Baixo': 11, 'Flatform': 12,
@@ -95,4 +97,4 @@ masterCategory_accuracy = score[3]
 subCategory_accuracy = score[4]
 
 df.loc[df.index.max()+1] = [model_type, weights_path, masterCategory_accuracy, subCategory_accuracy, params,np.datetime64('now')]
-df.to_csv("./testing/test_results_com_tf.csv", index=False)
+df.to_csv("./testing/test_results_tf_25_" + TODAY + ".csv", index=False)

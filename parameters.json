@@ -22,7 +22,7 @@
             "class_name": "Conv2D",
             "config": {
                 "name": "block1_conv1",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "filters": 64,
                 "kernel_size": [
@@ -74,7 +74,7 @@
             "class_name": "BatchNormalization",
             "config": {
                 "name": "batch_normalization",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "axis": [
                     3
@@ -120,7 +120,7 @@
             "class_name": "Conv2D",
             "config": {
                 "name": "block1_conv2",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "filters": 64,
                 "kernel_size": [
@@ -172,7 +172,7 @@
             "class_name": "BatchNormalization",
             "config": {
                 "name": "batch_normalization_1",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "axis": [
                     3
@@ -218,7 +218,7 @@
             "class_name": "MaxPooling2D",
             "config": {
                 "name": "block1_pool",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "pool_size": [
                     2,
@@ -247,7 +247,7 @@
             "class_name": "Conv2D",
             "config": {
                 "name": "block2_conv1",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "filters": 128,
                 "kernel_size": [
@@ -299,7 +299,7 @@
             "class_name": "BatchNormalization",
             "config": {
                 "name": "batch_normalization_2",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "axis": [
                     3
@@ -345,7 +345,7 @@
             "class_name": "Conv2D",
             "config": {
                 "name": "block2_conv2",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "filters": 128,
                 "kernel_size": [
@@ -397,7 +397,7 @@
             "class_name": "BatchNormalization",
             "config": {
                 "name": "batch_normalization_3",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "axis": [
                     3
@@ -443,7 +443,7 @@
             "class_name": "MaxPooling2D",
             "config": {
                 "name": "block2_pool",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "pool_size": [
                     2,
@@ -472,7 +472,7 @@
             "class_name": "Conv2D",
             "config": {
                 "name": "block3_conv1",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "filters": 256,
                 "kernel_size": [
@@ -524,7 +524,7 @@
             "class_name": "BatchNormalization",
             "config": {
                 "name": "batch_normalization_4",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "axis": [
                     3
@@ -570,7 +570,7 @@
             "class_name": "Conv2D",
             "config": {
                 "name": "block3_conv2",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "filters": 256,
                 "kernel_size": [
@@ -622,7 +622,7 @@
             "class_name": "BatchNormalization",
             "config": {
                 "name": "batch_normalization_5",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "axis": [
                     3
@@ -668,7 +668,7 @@
             "class_name": "MaxPooling2D",
             "config": {
                 "name": "block3_pool",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "pool_size": [
                     2,
@@ -697,7 +697,7 @@
             "class_name": "Conv2D",
             "config": {
                 "name": "block4_conv1",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "filters": 512,
                 "kernel_size": [
@@ -749,7 +749,7 @@
             "class_name": "BatchNormalization",
             "config": {
                 "name": "batch_normalization_6",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "axis": [
                     3
@@ -795,7 +795,7 @@
             "class_name": "Conv2D",
             "config": {
                 "name": "block4_conv2",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "filters": 512,
                 "kernel_size": [
@@ -847,7 +847,7 @@
             "class_name": "BatchNormalization",
             "config": {
                 "name": "batch_normalization_7",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "axis": [
                     3
@@ -893,7 +893,7 @@
             "class_name": "MaxPooling2D",
             "config": {
                 "name": "block4_pool",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "pool_size": [
                     2,
@@ -922,7 +922,7 @@
             "class_name": "Conv2D",
             "config": {
                 "name": "block5_conv1_sub",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "filters": 512,
                 "kernel_size": [
@@ -974,7 +974,7 @@
             "class_name": "BatchNormalization",
             "config": {
                 "name": "batch_normalization_13",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "axis": [
                     3
@@ -1020,7 +1020,7 @@
             "class_name": "Conv2D",
             "config": {
                 "name": "block5_conv1_mas",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "filters": 512,
                 "kernel_size": [
@@ -1072,7 +1072,7 @@
             "class_name": "Conv2D",
             "config": {
                 "name": "block5_conv2_sub",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "filters": 512,
                 "kernel_size": [
@@ -1124,7 +1124,7 @@
             "class_name": "BatchNormalization",
             "config": {
                 "name": "batch_normalization_8",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "axis": [
                     3
@@ -1170,7 +1170,7 @@
             "class_name": "BatchNormalization",
             "config": {
                 "name": "batch_normalization_14",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "axis": [
                     3
@@ -1216,7 +1216,7 @@
             "class_name": "Conv2D",
             "config": {
                 "name": "block5_conv2_mas",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "filters": 512,
                 "kernel_size": [
@@ -1268,7 +1268,7 @@
             "class_name": "Conv2D",
             "config": {
                 "name": "block5_conv3_sub",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "filters": 512,
                 "kernel_size": [
@@ -1320,7 +1320,7 @@
             "class_name": "BatchNormalization",
             "config": {
                 "name": "batch_normalization_9",
-                "trainable": true,
+                "trainable": false,
                 "dtype": "float32",
                 "axis": [
                     3

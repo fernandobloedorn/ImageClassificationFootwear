@@ -1,0 +1,2 @@
+Model,Weights Path,Category Accuracy %,SubCategory Accuracy %,Trainable params,Timestamp
+Condition,./weights/Condition_best_weights_normal.h5,0.946093738079071,0.9495309591293335,90774430.0,2022-02-24 11:29:40

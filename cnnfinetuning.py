@@ -159,6 +159,17 @@ class Train:
             outputs=[c_1_pred, c_2_pred],
             name="Condition_CNN")
 
+        print("=========================")
+        print("Layers:", len(model.layers)) # 54
+        print("=========================")
+
+        model.trainable = True
+
+        fine_tuning_at = 30
+
+        for layer in model.layers[:fine_tuning_at]:
+            layer.trainable = False
+
         trainable_params= np.sum([K.count_params(w) for w in model.trainable_weights])
         #trainable_params = tf.keras.backend.count_params(model.trainable_weights)
         print("===== Trainable paramaters: "+str(trainable_params))

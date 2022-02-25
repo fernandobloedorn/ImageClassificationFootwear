@@ -60,7 +60,7 @@ val_df['SubCategoryOneHot'] = onehot_sub.tolist()
 
 direc = './img/'
 target_size=(150, 200)
-TODAY = str(datetime.date(datetime.now()))
+TODAY = datetime.now().strftime("%Y-%m-%d-%H%M%S") # str(datetime.date(datetime.now()))
 
 train_datagen = ImageDataGenerator(rescale=1. / 255,
                                    shear_range=0.1,
@@ -125,6 +125,7 @@ def train_recurrent(label, model,cbks):
         plt.legend(['Train master', 'Val master', 'Train sub', 'Val sub'], loc='upper left')
         plt.show()
         plt.savefig("./plots/"+label+"_"+str(epochs)+"_epochs_"+TODAY+"_accuracy_normal.png", bbox_inches='tight')
+        plt.clf()
 
         # summarize history for loss
         plt.plot(history.history['master_output_loss'])
@@ -133,10 +134,11 @@ def train_recurrent(label, model,cbks):
         plt.plot(history.history['val_sub_output_loss'])
         plt.title('Model loss')
         plt.ylabel('Loss')
-        plt.xlabel('Tpoch')
+        plt.xlabel('Epoch')
         plt.legend(['Train master', 'Val master', 'Train sub', 'Val sub'], loc='upper left')
         plt.show()
         plt.savefig("./plots/"+label+"_"+str(epochs)+"_epochs_"+TODAY+"_loss_normal.png", bbox_inches='tight')
+        plt.clf()
 
 
     except ValueError as v:
