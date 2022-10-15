@@ -8,7 +8,7 @@ from tensorflow.keras.utils import get_file
 import sys
 from datetime import datetime
 
-epochs = 25
+epochs = 50
 
 batch = 128
 
@@ -116,7 +116,7 @@ def train_recurrent(label, model,cbks):
                             callbacks=cbks)
         print("Finished training")
         #Save training as csv
-        pd.DataFrame.from_dict(history.history).to_csv("./history/"+label+"_"+str(epochs)+"_epochs_"+TODAY+'_com_tf_25.csv',index=False)
+        pd.DataFrame.from_dict(history.history).to_csv("./history/"+label+"_"+str(epochs)+"_epochs_"+TODAY+'_com_tf_50_nesterov.csv',index=False)
 
 
         # summarize history for Accuracy
@@ -129,7 +129,7 @@ def train_recurrent(label, model,cbks):
         plt.xlabel('Epoch')
         plt.legend(['Train master', 'Val master', 'Train sub', 'Val sub'], loc='upper left')
         plt.show()
-        plt.savefig("./plots/"+label+"_"+str(epochs)+"_epochs_"+TODAY+"_accuracy_com_tf_25.png", bbox_inches='tight')
+        plt.savefig("./plots/"+label+"_"+str(epochs)+"_epochs_"+TODAY+"_accuracy_com_tf_50_nesterov.png", bbox_inches='tight')
         plt.clf()
 
         # summarize history for loss
@@ -142,13 +142,13 @@ def train_recurrent(label, model,cbks):
         plt.xlabel('Epoch')
         plt.legend(['Train master', 'Val master', 'Train sub', 'Val sub'], loc='upper left')
         plt.show()
-        plt.savefig("./plots/"+label+"_"+str(epochs)+"_epochs_"+TODAY+"_loss_com_tf_25.png", bbox_inches='tight')
+        plt.savefig("./plots/"+label+"_"+str(epochs)+"_epochs_"+TODAY+"_loss_com_tf_50_nesterov.png", bbox_inches='tight')
         plt.clf()
     except ValueError as v:
         print(v)
 
     # Saving the weights in the current directory
-    model.save_weights("./weights/"+label+"_"+str(epochs)+"_epochs_"+TODAY+"_com_tf_25.h5")                                        
+    model.save_weights("./weights/"+label+"_"+str(epochs)+"_epochs_"+TODAY+"_com_tf_50_nesterov.h5")                                        
 
 from cnn import Train
 train = Train(model_type)

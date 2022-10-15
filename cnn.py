@@ -5,7 +5,7 @@ from tensorflow.keras.applications.inception_v3 import InceptionV3
 from tensorflow.keras.layers import Dense, GlobalAveragePooling2D, MaxPooling2D, Flatten, Input, Conv2D, concatenate
 from tensorflow.keras.layers import BatchNormalization, Dropout, Add, Softmax
 from tensorflow.keras.models import Model
-from tensorflow.keras.optimizers import SGD
+from tensorflow.keras.optimizers import SGD, Adam, RMSprop
 from tensorflow.keras.constraints import Constraint
 import numpy as np
 from tensorflow.python.ops import math_ops
@@ -167,11 +167,13 @@ class Train:
             "master_output": "categorical_crossentropy",
             "sub_output": "categorical_crossentropy",
         }
-        model.compile(optimizer=SGD(lr=0.001, momentum=0.9), loss=losses, metrics=['categorical_accuracy', f1_m, precision_m, recall_m])
+        model.compile(optimizer=SGD(lr=0.001, momentum=0.9, nesterov=True), loss=losses, metrics=['categorical_accuracy', f1_m, precision_m, recall_m])
+        # model.compile(optimizer=Adam(lr=0.001), loss=losses, metrics=['categorical_accuracy', f1_m, precision_m, recall_m])
+        # model.compile(optimizer=RMSprop(lr=0.001, momentum=0.9), loss=losses, metrics=['categorical_accuracy', f1_m, precision_m, recall_m])
 
         saveParameters(json.dumps(model.get_config(), indent = 4))
 
-        checkpoint = ModelCheckpoint("./weights/"+label+"_best_weights_tf_ft_25.h5", monitor='val_loss', verbose=1,
+        checkpoint = ModelCheckpoint("./weights/"+label+"_best_weights_tf_50_nesterov.h5", monitor='val_loss', verbose=1,
             save_best_only=True, save_weights_only=True,mode='auto')
         self.cbks = [checkpoint]
         self.model = model
@@ -275,10 +277,10 @@ class Test:
         #trainable_params = tf.keras.backend.count_params(model.trainable_weights)
         print("Trainable paramaters: "+str(trainable_params))
 
-        model.compile(optimizer=SGD(lr=0.001, momentum=0.9), loss=losses,
+        model.compile(optimizer=SGD(lr=0.001, momentum=0.9, nesterov=True), loss=losses,
                       metrics=['categorical_accuracy', f1_m, precision_m, recall_m])
                       
-        checkpoint = ModelCheckpoint("./weights/"+label+"_best_weights_tf_25.h5", monitor='val_loss', verbose=1,
+        checkpoint = ModelCheckpoint("./weights/"+label+"_best_weights_tf_50_rms.h5", monitor='val_loss', verbose=1,
             save_best_only=True, save_weights_only=True,mode='auto')
         self.cbks = [checkpoint]
         self.model = model

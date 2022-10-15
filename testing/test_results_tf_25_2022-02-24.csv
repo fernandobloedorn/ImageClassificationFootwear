@@ -1,2 +1,0 @@
-Model,Weights Path,Category Accuracy %,SubCategory Accuracy %,Trainable params,Timestamp
-Condition,./weights/Condition_best_weights_tf_25.h5,0.960156261920929,0.9591840505599976,90774430.0,2022-02-24 21:21:00

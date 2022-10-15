@@ -112,7 +112,7 @@ def train_recurrent(label, model,cbks):
                             callbacks=cbks)
         print("Finished training")
         #Save training as csv
-        pd.DataFrame.from_dict(history.history).to_csv("./history/"+label+"_"+str(epochs)+"_epochs_"+TODAY+'_normal.csv',index=False)
+        pd.DataFrame.from_dict(history.history).to_csv("./history/"+label+"_"+str(epochs)+"_epochs_"+TODAY+'_tf_50.csv',index=False)
 
         # summarize history for Accuracy
         plt.plot(history.history['master_output_categorical_accuracy'])
@@ -124,7 +124,7 @@ def train_recurrent(label, model,cbks):
         plt.xlabel('Epoch')
         plt.legend(['Train master', 'Val master', 'Train sub', 'Val sub'], loc='upper left')
         plt.show()
-        plt.savefig("./plots/"+label+"_"+str(epochs)+"_epochs_"+TODAY+"_accuracy_normal.png", bbox_inches='tight')
+        plt.savefig("./plots/"+label+"_"+str(epochs)+"_epochs_"+TODAY+"_accuracy_tf_50.png", bbox_inches='tight')
         plt.clf()
 
         # summarize history for loss
@@ -137,7 +137,7 @@ def train_recurrent(label, model,cbks):
         plt.xlabel('Epoch')
         plt.legend(['Train master', 'Val master', 'Train sub', 'Val sub'], loc='upper left')
         plt.show()
-        plt.savefig("./plots/"+label+"_"+str(epochs)+"_epochs_"+TODAY+"_loss_normal.png", bbox_inches='tight')
+        plt.savefig("./plots/"+label+"_"+str(epochs)+"_epochs_"+TODAY+"_loss_tf_50.png", bbox_inches='tight')
         plt.clf()
 
 
@@ -145,7 +145,7 @@ def train_recurrent(label, model,cbks):
         print(v)
 
     # Saving the weights in the current directory
-    model.save_weights("./weights/"+label+"_"+str(epochs)+"_epochs_"+TODAY+"_normal.h5")                                        
+    model.save_weights("./weights/"+label+"_"+str(epochs)+"_epochs_"+TODAY+"_tf_50.h5")                                        
 
 from cnn import Train
 train = Train(model_type)
